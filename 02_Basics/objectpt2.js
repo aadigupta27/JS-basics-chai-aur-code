@@ -61,5 +61,34 @@ console.log(Object.entries(user)); // gives arrays of combination of valuenames 
 
 console.log(user.hasOwnProperty("isActive")); // first verify whether the property is available or not
 
+const course = {
+    courseName: "Js in hindi",
+    price :"999",
+    courseInstructor : "Hitesh Sir"
+}
 
+// destructuring objects
+// console.log(course.courseInstructor);
 
+const {courseInstructor} = course;
+const {courseInstructor: Instructor} = course;  // name can be changed as well. this is done to avoid using dot operator for everytime accessing the values of the object.
+
+console.log(courseInstructor);
+console.log(Instructor);
+
+// JSON API
+
+// {
+//     "name" : "Aadi Gupta",
+//     "courseName1" : "Js in hindi",      // JSON files are stored in this manner
+//     "price" : "free"
+// }
+
+// we use randomUseMe API for API response and JSON Formatter tool to deeply understand the the API calling
+// API's can be in form of arrays (Arrays of object)
+
+[
+    {},
+    {},     // for example !
+    {}
+]
