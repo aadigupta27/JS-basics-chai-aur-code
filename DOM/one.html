@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+    <style>
+        .bg-color{
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-color">
+    <div id="heading">
+        <h1>My Heading.</h1>
+        <h2>Lorem ipsum do. Officiie quisquam ident,assumenda alias.</h2>
+        <h2>Lorem ipsum do. Officiie quisquam ident,assumenda alias.</h2>
+        <h2>Lorem ipsum do. Officiie quisquam ident,assumenda alias.</h2>
+        <h2>Lorem ipsum do. Officiie quisquam ident,assumenda alias.</h2>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+
+        <ul>
+            <li class="list">one</li>
+            <li class="list">two</li>
+            <li class="list">three</li>
+        </ul>
+    </div>
+
+    <!-- document.getElementById('heading') -->
+    <!-- document.getElementById('heading').getAttribute('id') -->
+    <!-- document.getElementById('heading').getAttribute('class') -->
+    <!-- document.getElementById('heading').setAttribute('class', 'test') -->
+    <!-- heading.style.backgroundColor = 'lightblue' -->
+
+    <!-- heading.innerHTML    // shows all the content along with html tags 
+'\n        <h1>My Heading.</h1>\n        <p>Lorem ipsum dolor sit amet consectetur.</p>\n    '
+
+heading.textContent    // shows the whole text(even if its hidden)
+'\n        My Heading.\n        Lorem ipsum dolor sit amet consectetur.\n    '
+
+heading.innerText     // shows only the content currently visible to the webpage.
+'My Heading.\n\nLorem ipsum dolor sit amet consectetur.' -->
+
+
+<!-- document.getElementsByClassName('test')
+HTMLCollection [div#heading.test, heading: div#heading.test]    // html collections are different from arrays !!! -->
+                                                                <!-- // html collections and  node lists are not pure arrays -->
+
+    <!-- to convert html collection or nodelist to array we use .... Array.from(variableName in which these are stored) -->
+    <!-- these are ought to be stored in different variable to perform functions like forEach, etc. -->
+
+</body>
+</html>
