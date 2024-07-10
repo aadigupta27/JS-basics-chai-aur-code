@@ -92,3 +92,19 @@ form.addEventListener('submit', function (e) {
 });
 
 ```
+
+### Project-3 
+#### Digital Clock
+
+``` Javascript
+const clock = document.querySelector('#clock');
+
+//repeats method after every second !
+setInterval(function () {
+  const date = new Date();
+  // const time = document.createTextNode(date.toLocaleTimeString());
+  // clock.appendChild(time);   // time is getting printed multiple times.
+  clock.innerHTML = date.toLocaleTimeString();
+}, 1000);
+
+```
