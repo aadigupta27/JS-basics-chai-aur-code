@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code | DOM</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+
+    // function definition !!!   // optimized as we dont have to traverse the whole tree instead we directly insert element in th end !
+
+    function addOptiLang(langName) {
+       const li =  document.createElement('li');
+       const liElement = document.createTextNode(langName);
+        li.appendChild(liElement);
+        document.querySelector('.language').appendChild(li);  // appending child node inside the ul element(for which first select the class of ul and then append);
+    }
+
+    // function call / execution!!!
+
+    addOptiLang("Java");
+    addOptiLang("C++");
+    addOptiLang("Python");
+
+       // EDIT - 1
+       
+    const secondLang = document.querySelector("li:nth-child(2)");
+    // secondLang.innerHTML = "mojo";
+    // console.log(secondLang.innerHTML);
+    const newLi = document.createElement('li');
+    newLi.textContent = "Mojo";
+    secondLang.replaceWith(newLi);    // replacing content of secondlang with new created li mojo
+
+    //edit - 2
+
+    const thirdlang = document.querySelector('li:nth-child(3)');  // for first child -- li:first-child;
+    // const newli3 = document.createElement('li');
+    // newli3.textContent = "GoLang";
+    // thirdlang.replaceWith(newli3);
+    thirdlang.outerHTML = "<li>Typescript</li>";   // another way !
+
+    //remove 
+
+    const lastlang = document.querySelector('li:last-child');
+    lastlang.remove();
+
+</script>
+</html>
