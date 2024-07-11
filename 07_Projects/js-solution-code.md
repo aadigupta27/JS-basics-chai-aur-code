@@ -205,3 +205,36 @@ function newGame() {
 }
 
 ```
+
+### Project-5
+#### UnlimitedColors 
+
+```Javascript
+// random color generator
+
+const random = function () {
+  const hexValue = '0123456789ABCDEF';
+  let HexCode = `#`;
+  for (let i = 0; i < 6; i++) {
+    const randomIndex = parseInt(Math.random() * 16);
+    // let randomArray = hexValue.split('');
+    // HexCode += `${randomArray[randomIndex]}`;   // one of the way !
+    HexCode += hexValue[randomIndex];
+  }
+  return HexCode;
+};
+function changeBg (){
+  document.body.style.backgroundColor = random();
+}
+let interval;
+
+const startChangingColor = function(){
+  interval = setInterval(changeBg, 1000);
+}
+const stopChangingColor = function(){
+  clearInterval(interval);
+}
+document.querySelector('#start').addEventListener('click',startChangingColor,false);
+document.querySelector('#stop').addEventListener('click',stopChangingColor,false);
+
+```
