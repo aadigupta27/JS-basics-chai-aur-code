@@ -31,11 +31,6 @@
      // attachEvent() -- previously used on internet explorers for applications.
     // jQuery - uses .onEventListeners(), used widely in previous days!
 
-    // type, timestamp, defultPrevented
-    // toElement, target, srcelement, currentTarget
-    //CLientX, ClientY, screenX, screenY
-    //altKey, ctrlKey, shiftKey, keyCode
-
     // Event bubbling mode{when attribute is false} (insider event executes first(gies form smaller scale to larger one.))
     document.getElementById('images').addEventListener('click', function(e){
         console.log("clicked inside the ul");
@@ -63,3 +58,72 @@
         removeIt.parentNode.removeChild(removeIt);   // removeIt parent- ul ka child -li ko remove karo.
         }   
     }, false)
+
+    // Events to study as a homework. 
+
+    // type, timestamp, defultPrevented
+    // toElement, target, srcelement, currentTarget
+    //CLientX, ClientY, screenX, screenY
+    //altKey, ctrlKey, shiftKey, keyCode
+
+    //type event property --
+    //The type read-only property of the Event interface returns a string containing the event's type.
+
+    //Timestamp --
+
+    //The timeStamp read-only property of the Event interface returns the time (in milliseconds) at which the event was created.This value is the number of milliseconds elapsed from the beginning of the time origin until the event was created.
+    //The value is a DOMHighResTimeStamp accurate to 5 microseconds (0.005 ms), but the precision is reduced to prevent fingerprinting.
+    //(The DOMHighResTimeStamp type is a double and is used to store a time value in milliseconds.)-
+    //-(Fingerprinting is a practice in which websites identify a particular browser  by collecting and combining distinguishing features of the browser and underlying operating system)
+
+        //     function getTime(event) {
+        // const time = document.getElementById("time");
+        // time.firstChild.nodeValue = event.timeStamp;
+        // }
+        // document.body.addEventListener("keypress", getTime);
+
+        //defaultPrevented property of Event---
+
+        //The defaultPrevented read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.
+
+        //Calling preventDefault() during any stage of event flow cancels the event, meaning that any default action normally taken by the implementation as a result of the event will not occur.
+        // You can use Event.cancelable to check if the event is cancelable. Calling preventDefault() for a non-cancelable event has no effect.
+
+        //target --
+
+        // The read-only target property of the Event interface is a reference to the object onto which the event was dispatched. 
+        // It is different from Event.currentTarget when the event handler is called during the bubbling or capturing phase of the event.
+
+        // Event.currentTarget--
+        //The currentTarget read-only property of the Event interface identifies the element to which the event handler has been attached.
+
+        // toElement and fromElement --
+        // they are deprecated and replaced by target and relatedTarget. it tells us from where the mouse event had occured and where the mouse is going to.
+        // Similarly srcElement is deprecated and instead event.target is used !
+
+        //MOUSE EVENT--
+
+        // clientX(double value odf coordinates)
+        //The clientX read-only property of the MouseEvent interface provides the horizontal coordinate within the application's viewport at which the event occurred (as opposed to the coordinate within the page).
+
+        //clientY(double value odf coordinates)
+        //The clientY read-only property of the MouseEvent interface provides the vertical coordinate within the application's viewport at which the event occurred (as opposed to the coordinate within the page).
+
+        //screenX(double value odf coordinates)
+        //The screenX read-only property of the MouseEvent interface provides the horizontal coordinate (offset) of the mouse pointer in screen coordinates.
+
+        //screenY(double value odf coordinates)
+        //The screenY read-only property of the MouseEvent interface provides the vertical coordinate (offset) of the mouse pointer in screen coordinates.
+
+        //altKey
+        //The MouseEvent.altKey read-only property is a boolean value that indicates whether the alt key was pressed or not when a given mouse event occurs.
+        //A boolean value, where true indicates that the key is pressed, and false indicates that the key is not pressed.
+
+        //shiftKey
+        //The MouseEvent.shiftKey read-only property is a boolean value that indicates whether the shift key was pressed or not when a given mouse event occurs.
+        //A boolean value, where true indicates that the key is pressed, and false indicates that the key is not pressed.
+        //ctrl Key is similar to alt and shift
+
+        //keyCode property has been deprecated 
+        //This is usually the decimal ASCII (RFC 20) or Windows 1252 code corresponding to the key. If the key can't be identified, this value is 0.
+        //The value of key events which are caused by pressing or releasing printable keys in standard position is not compatible between browsers.
