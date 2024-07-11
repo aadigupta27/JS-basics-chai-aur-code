@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.getElementById('owl').onclick = function(){   // onclick doesnot support much features than event listeners.
+    //     alert("owl clicked")
+    // }
+
+    document.getElementById('owl').addEventListener('click', function(e){  // good practice to use this method.
+        alert('owl clicked');
+        console.log(e);
+    }, false)
+
+     // attachEvent() -- previously used on internet explorers for applications.
+    // jQuery - uses .onEventListeners(), used widely in previous days!
+
+    // type, timestamp, defultPrevented
+    // toElement, target, srcelement, currentTarget
+    //CLientX, ClientY, screenX, screenY
+    //altKey, ctrlKey, shiftKey, keyCode
+
+    // Event bubbling mode{when attribute is false} (insider event executes first(gies form smaller scale to larger one.))
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("clicked inside the ul");
+    }, false /*true*/)
+
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log("owl clicked");
+        e.stopPropagation()  // propogation gets stopped to upper bubble.    // on clicking owl, first "owl clicked" gets printed and then "clicked inside the ul"
+    }, false /*true*/)
+
+    // similarly if attribute is set to TRUE. Event capturing mode is enabled which goes from top to bottom
+    //hence first "clicked inside the ul"is printed and then "owl clicked"
+
+    document.getElementById('google').addEventListener('click', function(e){
+        console.log('google is clicked !');
+        e.preventDefault();
+    }, false)
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);
+
+        if(e.target.tagName == 'IMG'){
+            removeIt= e.target.parentNode;
+        // removeIt.remove();   1 way to remove the complete li
+        removeIt.parentNode.removeChild(removeIt);   // removeIt parent- ul ka child -li ko remove karo.
+        }   
+    }, false)
