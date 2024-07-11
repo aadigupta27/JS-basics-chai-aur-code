@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style ="background-color: #414141; color: white; ">
+    <h1>Chai aur Code</h1>
+    <button id="stop">STOP</button>
+</body>
+<script>
+    const sayAadi = function(){
+        console.log("Aadi");
+    };
+    const changeH1 = function(){
+        document.querySelector('h1').innerHTML = "Best JS series on YT !";
+    }
+    // setTimeout(sayAadi, 2000); // handler contains only the reference of the function, not the execution.
+    const changeMe = setTimeout(changeH1, 2000);
+
+    document.querySelector('#stop').addEventListener('click', function(){    // clicking on mouse clears all setTimeout tasks from queue.
+        clearTimeout(changeMe);  // reference of setTimeout is necessary for clearing it.
+        console.log('STOPPED !!!')
+    }, false);
+
+</script>
+</html>
