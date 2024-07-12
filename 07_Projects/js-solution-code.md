@@ -5,8 +5,8 @@
 [Click me](https://stackblitz.com/edit/dom-project-chaiaurcode-8r8qmp?file=1-colorChanger%2Fchaiaurcode.js,1-colorChanger%2Findex.html)
 
 # Solution Code
-### Project-1
-#### Background Color converter
+## Project-1
+### Background Color converter
 
 
 ```Javascript
@@ -49,8 +49,8 @@ buttons.forEach(function (button) {
 });
 
 ```
-### Project-2 
-#### BMI Calculator
+## Project-2 
+### BMI Calculator
 
 ```Javascript
 
@@ -93,8 +93,8 @@ form.addEventListener('submit', function (e) {
 
 ```
 
-### Project-3 
-#### Digital Clock
+## Project-3 
+### Digital Clock
 
 ``` Javascript
 const clock = document.querySelector('#clock');
@@ -109,8 +109,8 @@ setInterval(function () {
 
 ```
 
-### Project-4
-#### Guess the number - Game
+## Project-4
+### Guess the number - Game
 
 ```Javascript
 let randomNumber = parseInt(Math.random() * 100 + 1);
@@ -206,8 +206,39 @@ function newGame() {
 
 ```
 
-### Project-5
-#### UnlimitedColors 
+
+## Project-5
+### Keyboard-keys
+
+```Javascript
+const insert = document.getElementById('insert');
+
+window.addEventListener('keydown', (e) => {
+  insert.innerHTML = `
+    <div class='color'>
+    <table>
+    <tr>
+      <th>Key</th>
+      <th>Keycode</th> 
+      <th>Code</th>
+    </tr>
+    <tr>
+      <td>${e.key === ' ' ? 'Space' : e.key}</td>
+      <td>${e.keyCode}</td> 
+      <td>${e.code}</td>
+    </tr>
+    
+  </table>
+    </div>
+  `;
+});
+
+
+```
+
+
+## Project-6
+### UnlimitedColors 
 
 ```Javascript
 // random color generator
@@ -229,10 +260,13 @@ function changeBg (){
 let interval;
 
 const startChangingColor = function(){
+  if(!interval){
   interval = setInterval(changeBg, 1000);
+  }
 }
 const stopChangingColor = function(){
   clearInterval(interval);
+  interval = null;
 }
 document.querySelector('#start').addEventListener('click',startChangingColor,false);
 document.querySelector('#stop').addEventListener('click',stopChangingColor,false);
