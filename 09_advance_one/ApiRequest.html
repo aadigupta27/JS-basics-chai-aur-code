@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<style>
+    .container{
+        display: flex;
+        flex-direction : column;
+        border : 1px solid white;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        gap: 50px;
+        width: fit-content;
+        height: fit-content;
+    }
+    #upper-section{
+        height: 30px;
+        width: 30px;
+    }
+    #upper-section img{
+        height : 80px;
+        width : 80px;
+    }
+    #lower-section p{
+        font-size : 20px; 
+    }
+</style>
+<body style="background-color: #212121; color: white;">
+    <div class="container">
+        <div id = "upper-section">
+            <img src="" alt="profile-image" class="My-image">
+        </div>
+        <div id="lower-section">
+           <p>Followers : <span> </span></p> 
+        </div>
+    </div>
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/aadigupta27';
+    // client created but open() not called ! state UNSENT.
+    const xhr = new XMLHttpRequest();  // request ka new object craete karna padhta hai.
+    xhr.open('GET', requestUrl);   // open apne aap call nahi hota hai use call krwana padhta hai.
+    let avatarUrl;
+    xhr.onreadystatechange = function(){   // har baar state change karne par current state print karwayega. 
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+
+            // const data = this.responseText;
+            const data = JSON.parse(this.responseText); // now the string is converted into JSON format.
+            // console.log( data); // typeof -- object now. // property of xhr to get response in the form of text from the url.
+            //whenever a response is generated from a url, data is in the form of string(most of the time).
+            avatarUrl = data.avatar_url;
+            // console.log(avatarUrl);
+            
+            const image = document.querySelector('.My-image');
+            image.setAttribute('src', avatarUrl);
+
+            const followers = document.querySelector('span');
+            followers.innerHTML = data.followers;
+        }
+    }
+    xhr.send()
+
+    
+
+</script>
+</html>
