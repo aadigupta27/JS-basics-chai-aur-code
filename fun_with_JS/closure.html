@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure </title>
+</head>
+<body style=" background-color: #313131; color: white;">
+   <button id="Green">Green</button>
+   <button id="Orange">Orange</button>
+
+</body>
+
+<script>
+    // function init() {
+    //     let name = "Mozilla"; // name is a local variable created by init
+    //     function displayName() {
+    //         // displayName() is the inner function, that forms the closure
+    //         console.log(name); // use variable declared in the parent function
+    //     }
+    //     displayName();
+    //     }
+
+    // init();
+
+    // function outer(){
+    //     let username = "Aadi";
+    //     function inner(){
+    //         console.log(`Too Inner `, username);
+    //     }
+    //     inner();
+    // }
+    // outer();
+    // console.log(`Too Outer `, username); // username not defined error.
+
+
+    function makeFunc() {
+        const name = "Mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;  // ismein sirf displayName function nahi jaa rha hai. us function ke paas jo outer function ke local variable ya uske global variables ka access bhi mil jaata hai.
+        }
+
+    const myFunc = makeFunc();  //pura function hi return hua hai
+    myFunc();   // ab result main not defined error nahi aayega. Infact answer display ho jaayega.
+                // Yahi hai magic Closure property ka !
+
+        // na sirf function ka executional context, pura ka pura lexical scope bhi share hota hai memory se. (return function ki wajah se).
+
+</script>
+<script>
+    // document.getElementById('Orange').onclick = function(){
+    //     document.body.style.backgroundColor = "orange";
+    // }
+    // document.getElementById('Green').onclick = function(){
+    //     document.body.style.backgroundColor = "green";
+    // }
+
+    function clickHandler (color){
+        // document.body.style.backgroundColor = `${color}`; // isse kaam nahi chalega !!!
+        function changeColor(){
+            document.body.style.backgroundColor = `${color}`;
+        }
+        return changeColor; // returning function.
+    }
+    document.getElementById('Orange').onclick = clickHandler("orange");  // onclick ne function manga hai or hum bol rhe hain ki seedha function execute hi kardo... Isiliye click handler main function banake us func ko return karenge.
+    document.getElementById('Green').onclick = clickHandler("green"); // ab kaam krne lage hain dono
+
+</script>
+
+</html>
