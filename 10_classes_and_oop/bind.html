@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    
+    <button>Button Clicked</button>
+</body>
+<script>
+
+    class React{
+        constructor(){
+            this.library = "React";
+            this.server = "https://localhost:3300";
+
+            //requirement
+            document.querySelector('button')
+            .addEventListener('click', this.handleClick.bind(this));  // bina bind keyword ke handleClick main this ka reference sirf button tag pe aa rha tha, baaki this ka reference nahi tha isiliye this.server bhi error de rha tha.
+        }                                                               // .bind(this) karne ke baad this ek object ban jaata hai jismein this ke saath jitne bhi variables stored the wo sabhi aa jate hain.
+        handleClick(){
+            console.log("Button clicked");
+            console.log(this.server);  // now working !
+        }
+    }
+    const app = new React();
+</script>
+</html>
